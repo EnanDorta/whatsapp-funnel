@@ -7,7 +7,7 @@ API NestJS inteligente para gerenciar funil de atendimento via WhatsApp com inte
 - **NestJS** + TypeScript
 - **PostgreSQL** (Docker Compose)
 - **Prisma ORM**
-- **OpenAI GPT-4o-mini** (Conversação)
+- **OpenAI GPT-4.1-nano** (Conversação)
 - **OpenAI Embeddings** (Vetorização)
 - **Pinecone** (Busca por similaridade)
 
@@ -56,7 +56,7 @@ API NestJS inteligente para gerenciar funil de atendimento via WhatsApp com inte
                     ▼                   ▼
             ┌──────────────┐    ┌──────────────┐
             │   OpenAI     │    │   Pinecone   │
-            │   GPT-4o     │    │   Vector DB  │
+            │   GPT-4.1    │    │   Vector DB  │
             └──────────────┘    └──────────────┘
 ```
 
@@ -214,7 +214,7 @@ Health check da aplicação
 
 ### **OpenAI Integration**
 
-- **Modelo**: GPT-5-nano para conversação
+- **Modelo**: GPT-4.1-nano para conversação
 - **Embeddings**: text-embedding-ada-002 para vetorização
 - **Prompts**: Específicos para cada etapa do funil
 - **Contexto**: Histórico da conversa passado para IA
