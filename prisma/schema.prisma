@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Conversation {
+  id                 String    @id @default(uuid())
+  phoneNumber        String    @unique @map("phone_number")
+  status             Status @default(active)
+  funnelStep         FunnelStep @default(collect_name) @map("funnel_step")
+  lastActivity       DateTime  @default(now()) @map("last_activity")
+  createdAt          DateTime  @default(now()) @map("created_at")
+  finishedAt         DateTime? @map("finished_at")
+  name               String?
+  birthDate          DateTime? @map("birth_date")
+  weightLossReason   String? @map("weight_loss_reason")
+  qualified          Boolean?
+  messages           Message[]
+
+  @@map("conversations")
+}
+
+model Message {
+  id             String       @id @default(uuid())
+  conversationId String       @map("conversation_id")
+  role           MessageRole
+  content        String
+  timestamp      DateTime     @default(now())
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  @@map("messages")
+}
+
+enum Status {
+  active
+  expired
+  qualified
+  rejected
+}
+
+enum FunnelStep {
+  collect_name
+  collect_birth_date
+  collect_weight_loss_reason
+  qualified
+  rejected
+}
+
+enum MessageRole {
+  USER
+  AI
+}

@@ -1,0 +1,4 @@
+export const CONVERSATION_CONSTANTS = {
+  SESSION_TIMEOUT_MINUTES: 15,
+  DATE_FORMAT: 'YYYY-MM-DD',
+} as const;
