@@ -106,6 +106,7 @@ cp .env.example .env
 # - OPENAI_API_KEY
 # - PINECONE_API_KEY
 # - DATABASE_URL
+# - PORT (opcional, padrão: 3000)
 ```
 
 ### 3. **Iniciar PostgreSQL**
